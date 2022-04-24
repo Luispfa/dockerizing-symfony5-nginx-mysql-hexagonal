@@ -1,6 +1,6 @@
-# controllers:
-#     resource: ../../api/Controller/
-#     type: annotation
+controllers:
+    resource: ../../api/Controller/
+    type: annotation
 
 kernel:
     resource: ../../src/Kernel.php
