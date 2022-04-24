@@ -1,0 +1,45 @@
+version: '3'
+
+services:
+    nginx:
+        build: ./build/nginx
+        container_name: sf5_nginx
+        volumes:
+            - .:/var/www/sf5
+        ports:
+            - 8003:80
+
+    php:
+        build: ./build/php
+        container_name: sf5_php
+        environment:
+            APP_ENV: dev
+        volumes:
+            - .:/var/www/sf5
+        depends_on:
+            - mysql
+
+    mysql:
+        image: mysql:latest
+        container_name: sf5_mysql
+        command: --default-authentication-plugin=mysql_native_password
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=sf4
+            - MYSQL_USER=sf4
+            - MYSQL_PASSWORD=sf4
+        ports:
+            - 3308:3306
+        volumes:
+            - ./build/data:/var/lib/mysql
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: sf5_phpmyadmin
+        environment:
+          PMA_HOST: mysql
+          PMA_PORT: 3306
+        ports:
+            - 8080:80
+        links:
+            - mysql
