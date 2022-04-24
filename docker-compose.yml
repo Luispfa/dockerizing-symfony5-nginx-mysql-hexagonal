@@ -6,7 +6,7 @@ services:
         container_name: sf5_nginx
         volumes:
             - .:/var/www/sf5
-        ports:
+        ports: 
             - 8003:80
 
     php:
