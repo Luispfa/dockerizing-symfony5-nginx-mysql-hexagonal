@@ -45,8 +45,15 @@ A continuación se enumeran los requisitos mínimos para ejecutar el proyecto:
     ```
 ### Ejecutar api
 
-* Desde la raiz del proyecto, inicializar DOCKER   -->  \dockerizing-symfony5-nginx-mysql-hexagonal> .\init.sh
-* verificar que esten levantados los contenedores  -->  \dockerizing-symfony5-nginx-mysql-hexagonal> docker ps
+* Desde la raiz del proyecto, inicializar DOCKER
+    ```
+    \dockerizing-symfony5-nginx-mysql-hexagonal> .\init.sh
+    ```
+* verificar que esten levantados los contenedores
+    ```
+     \dockerizing-symfony5-nginx-mysql-hexagonal> docker ps
+    ```
+
 ```
 CONTAINER ID   IMAGE                                              COMMAND                  PORTS                               NAMES
 7ba0fc7a90ef   phpmyadmin/phpmyadmin                              "/docker-entrypoint.…"   0.0.0.0:8080->80/tcp                sf5_phpmyadmin
@@ -54,9 +61,18 @@ CONTAINER ID   IMAGE                                              COMMAND       
 95702883e4a4   dockerizing-symfony5-nginx-mysql-hexagonal_nginx   "/docker-entrypoint.…"   0.0.0.0:8003->80/tcp                sf5_nginx
 b845bd685fac   mysql:latest                                       "docker-entrypoint.s…"   33060/tcp, 0.0.0.0:3308->3306/tcp   sf5_mysql
 ```
-* Abrir un tty          -->  \dockerizing-symfony5-nginx-mysql-hexagonal> docker exec -it sf5_php  bash
-* Instalar dependecias  -->  /var/www/sf5# composer install
-* Ejecutar phpunit      -->  /var/www/sf5# ./vendor/bin/simple-phpunit
+* Abrir un tty
+```
+\dockerizing-symfony5-nginx-mysql-hexagonal> docker exec -it sf5_php  bash
+```
+* Instalar dependecias
+```
+/var/www/sf5# composer install
+```
+* Ejecutar phpunit
+```
+/var/www/sf5# ./vendor/bin/simple-phpunit
+```
 
 * Endpoint   : http://localhost:8003/calculate-score
 * phpMyAdmin : http://localhost:8080/
