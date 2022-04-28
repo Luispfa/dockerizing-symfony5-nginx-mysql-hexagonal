@@ -1,0 +1,27 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Application;
+
+use App\Domain\AdResponse;
+use App\Domain\AdsResponse;
+use App\Domain\SystemPersistenceRepository;
+use function Lambdish\Phunctional\map as PhunctionalMap;
+
+final class AdFinder
+{
+    private $repository;
+
+    public function __construct(SystemPersistenceRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    public function __invoke(int $id): AdsResponse
+    {
+        $ad = $this->repository->searchAd($id);
+
+        return new AdsResponse(...PhunctionalMap(AdResponse::toResponse(), [$ad]));
+    }
+}

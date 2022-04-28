@@ -7,6 +7,7 @@ namespace App\Infrastructure\Persistence;
 use App\Domain\Ad;
 use App\Domain\Picture;
 use App\Domain\SystemPersistenceRepository;
+use function Lambdish\Phunctional\search as PhunctionalSearch;
 
 final class InFileSystemPersistence implements SystemPersistenceRepository
 {
@@ -43,5 +44,15 @@ final class InFileSystemPersistence implements SystemPersistenceRepository
     public function getPictures(): array
     {
         return $this->pictures;
+    }
+
+    public function searchAd(int $id): Ad
+    {
+        return PhunctionalSearch(
+            function (Ad $ad) use ($id) {
+                return $ad->getId() == $id;
+            },
+            $this->ads
+        );
     }
 }

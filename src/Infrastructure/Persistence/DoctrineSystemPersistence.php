@@ -13,12 +13,16 @@ class DoctrineSystemPersistence extends DoctrineRepository implements SystemPers
 {
     public function getAds(): array
     {
-
         return $this->searchAll(Ad::class);
     }
 
     public function getPictures(): array
     {
         return $this->searchAll(Picture::class);
+    }
+
+    public function searchAd(int $id): Ad
+    {
+        return $this->search(Ad::class, $id);
     }
 }

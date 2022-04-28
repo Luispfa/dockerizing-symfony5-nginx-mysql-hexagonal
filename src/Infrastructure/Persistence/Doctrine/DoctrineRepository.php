@@ -27,6 +27,11 @@ abstract class DoctrineRepository
         return $this->repository($entity)->findAll();
     }
 
+    public function search($entity, int $id)
+    {
+        return $this->repository($entity)->find($id);
+    }
+
     protected function persist($entity): void
     {
         $this->entityManager()->persist($entity);
@@ -39,7 +44,7 @@ abstract class DoctrineRepository
         $this->entityManager()->flush($entity);
     }
 
-    protected function repository($entityClass)
+    protected function repository($entityClass): EntityRepository
     {
         return $this->entityManager->getRepository($entityClass);
     }

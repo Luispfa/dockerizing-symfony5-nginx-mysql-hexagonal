@@ -37,3 +37,7 @@ services:
     App\Application\CalculateScore:
         arguments: ['@system_repository'] 
         public: true
+
+    App\Application\AdFinder:
+        arguments: ['@system_repository'] 
+        public: true
