@@ -3,6 +3,7 @@
 namespace Tests\Domain\Score;
 
 use App\Domain\Ad;
+use App\Domain\AdId;
 use App\Domain\Score\ScoreFlatDescription;
 use App\Infrastructure\Persistence\InFileSystemPersistence;
 use PHPUnit\Framework\TestCase;
@@ -35,11 +36,17 @@ class ScoreFlatDescriptionTest extends TestCase
 
     public function testLessThan50Words()
     {
-        $ad = new Ad(2, 
-        'FLAT',
-         'Nuevo ¡tico cÈntrico reciÈn reformado. No deje pasar la oportunidad y adquiera este ¡tico de lujo 
-         Nuevo ¡tico cÈntrico reciÈn reformado. No deje pasar la oportunidad y adquiera este ¡tico de lujo', 
-         [4], 300, null, null, null);
+        $ad = new Ad(
+            new AdId(2),
+            'FLAT',
+            'Nuevo √Åtico c√©ntrico reci√©n reformado. No deje pasar la oportunidad y adquiera este √Åtico de lujo 
+         Nuevo √Åtico c√©ntrico reci√©n reformado. No deje pasar la oportunidad y adquiera este √Åtico de lujo',
+            [4],
+            300,
+            null,
+            null,
+            null
+        );
         $score = new ScoreFlatDescription($ad);
         $result = $score();
 
@@ -48,13 +55,19 @@ class ScoreFlatDescriptionTest extends TestCase
 
     public function testGreaterThan50Words()
     {
-        $ad = new Ad(2, 
-        'FLAT',
-         'Nuevo ¡tico cÈntrico reciÈn reformado. No deje pasar la oportunidad y adquiera este ¡tico de lujo 
-         Nuevo ¡tico cÈntrico reciÈn reformado. No deje pasar la oportunidad y adquiera este ¡tico de lujo 
-         Nuevo ¡tico cÈntrico reciÈn reformado. No deje pasar la oportunidad y adquiera este ¡tico de lujo 
-         Nuevo ¡tico cÈntrico reciÈn reformado. No deje pasar la oportunidad y adquiera este ¡tico de lujo', 
-         [4], 300, null, null, null);
+        $ad = new Ad(
+            new AdId(2),
+            'FLAT',
+            'Nuevo √Åtico c√©ntrico reci√©n reformado. No deje pasar la oportunidad y adquiera este √Åtico de lujo 
+         Nuevo √Åtico c√©ntrico reci√©n reformado. No deje pasar la oportunidad y adquiera este √Åtico de lujo 
+         Nuevo √Åtico c√©ntrico reci√©n reformado. No deje pasar la oportunidad y adquiera este √Åtico de lujo 
+         Nuevo √Åtico c√©ntrico reci√©n reformado. No deje pasar la oportunidad y adquiera este √Åtico de lujo ',
+            [4],
+            300,
+            null,
+            null,
+            null
+        );
         $score = new ScoreFlatDescription($ad);
         $result = $score();
 

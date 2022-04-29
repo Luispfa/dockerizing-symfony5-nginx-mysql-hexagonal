@@ -3,6 +3,7 @@
 namespace Tests\Domain\Score;
 
 use App\Domain\Ad;
+use App\Domain\AdId;
 use App\Domain\Score\ScoreChaletDescription;
 use App\Infrastructure\Persistence\InFileSystemPersistence;
 use PHPUnit\Framework\TestCase;
@@ -34,11 +35,11 @@ class ScoreChaletDescriptionTest extends TestCase
     public function testGreaterThan50Words()
     {
         $ad = new Ad(
-            8,
+            new AdId(8),
              'CHALET',
-              'Maravilloso chalet situado en las afueras de un pequeñoo pueblo rural. El entorno es espectacular, las vistas magníficas. cómprelo ahora!
-              Maravilloso chalet situado en las afueras de un pequeñoo pueblo rural. El entorno es espectacular, las vistas magníficas. cómprelo ahora!
-              Maravilloso chalet situado en las afueras de un pequeñoo pueblo rural. El entorno es espectacular, las vistas magníficas. cómprelo ahora!', 
+              'Maravilloso chalet situado en las afueras de un pequeÃ±oo pueblo rural. El entorno es espectacular, las vistas magnÃ­ficas. cÃ³mprelo ahora!
+              Maravilloso chalet situado en las afueras de un pequeÃ±oo pueblo rural. El entorno es espectacular, las vistas magnÃ­ficas. cÃ³mprelo ahora!
+              Maravilloso chalet situado en las afueras de un pequeÃ±oo pueblo rural. El entorno es espectacular, las vistas magnÃ­ficas. cÃ³mprelo ahora!', 
               [1, 7], 300, null, null, null);
         $score = new ScoreChaletDescription($ad);
         $result = $score();
