@@ -13,7 +13,7 @@ final class Ad
 
     public function __construct(
         AdId $id,
-        String $typology,
+        AdTypology $typology,
         String $description,
         array $pictures,
         ?int $houseSize = null,
@@ -36,7 +36,7 @@ final class Ad
         return $this->id;
     }
 
-    public function getTypology(): string
+    public function getTypology(): AdTypology
     {
         return $this->typology;
     }

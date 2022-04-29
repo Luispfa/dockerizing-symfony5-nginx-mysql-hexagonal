@@ -4,6 +4,7 @@ namespace Tests\Domain\Score;
 
 use App\Domain\Ad;
 use App\Domain\AdId;
+use App\Domain\AdTypology;
 use App\Domain\Score\ScoreFlatDescription;
 use App\Infrastructure\Persistence\InFileSystemPersistence;
 use PHPUnit\Framework\TestCase;
@@ -38,7 +39,7 @@ class ScoreFlatDescriptionTest extends TestCase
     {
         $ad = new Ad(
             new AdId(2),
-            'FLAT',
+            new AdTypology('FLAT'),
             'Nuevo Ático céntrico recién reformado. No deje pasar la oportunidad y adquiera este Ático de lujo 
          Nuevo Ático céntrico recién reformado. No deje pasar la oportunidad y adquiera este Ático de lujo',
             [4],
@@ -57,7 +58,7 @@ class ScoreFlatDescriptionTest extends TestCase
     {
         $ad = new Ad(
             new AdId(2),
-            'FLAT',
+            new AdTypology('FLAT'),
             'Nuevo Ático céntrico recién reformado. No deje pasar la oportunidad y adquiera este Ático de lujo 
          Nuevo Ático céntrico recién reformado. No deje pasar la oportunidad y adquiera este Ático de lujo 
          Nuevo Ático céntrico recién reformado. No deje pasar la oportunidad y adquiera este Ático de lujo 

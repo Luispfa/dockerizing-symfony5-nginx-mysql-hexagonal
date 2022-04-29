@@ -7,7 +7,7 @@
     <entity name="App\Domain\Ad" table="ads">
         <embedded name="id" class="App\Domain\AdId" use-column-prefix="false" />
 
-        <field name="typology" column="typology" type="string" length="50" nullable="true" unique="false" />
+        <embedded name="typology" class="App\Domain\AdTypology" use-column-prefix="false" />
         <field name="description" column="description" type="string" nullable="true" unique="false" />
         <field name="pictures" column="pictures" type="json"  nullable="true" unique="false" />
         <field name="houseSize" column="house_size" type="integer" nullable="true" unique="false" />

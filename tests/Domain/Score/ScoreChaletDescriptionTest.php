@@ -4,6 +4,7 @@ namespace Tests\Domain\Score;
 
 use App\Domain\Ad;
 use App\Domain\AdId;
+use App\Domain\AdTypology;
 use App\Domain\Score\ScoreChaletDescription;
 use App\Infrastructure\Persistence\InFileSystemPersistence;
 use PHPUnit\Framework\TestCase;
@@ -36,7 +37,7 @@ class ScoreChaletDescriptionTest extends TestCase
     {
         $ad = new Ad(
             new AdId(8),
-             'CHALET',
+            new AdTypology('CHALET'),
               'Maravilloso chalet situado en las afueras de un pequeñoo pueblo rural. El entorno es espectacular, las vistas magníficas. cómprelo ahora!
               Maravilloso chalet situado en las afueras de un pequeñoo pueblo rural. El entorno es espectacular, las vistas magníficas. cómprelo ahora!
               Maravilloso chalet situado en las afueras de un pequeñoo pueblo rural. El entorno es espectacular, las vistas magníficas. cómprelo ahora!', 

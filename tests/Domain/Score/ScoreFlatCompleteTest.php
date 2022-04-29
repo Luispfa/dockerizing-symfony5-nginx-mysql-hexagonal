@@ -4,6 +4,7 @@ namespace Tests\Domain\Score;
 
 use App\Domain\Ad;
 use App\Domain\AdId;
+use App\Domain\AdTypology;
 use App\Domain\Score\ScoreFlatComplete;
 use App\Infrastructure\Persistence\InFileSystemPersistence;
 use PHPUnit\Framework\TestCase;
@@ -31,7 +32,7 @@ class ScoreFlatCompleteTest extends TestCase
 
     public function testIsNotCompleteHouseSizeZero()
     {
-        $ad = new Ad(new AdId(5), 'FLAT', 'Pisazo,', [3, 8], 0, null, null, null);
+        $ad = new Ad(new AdId(5), new AdTypology('FLAT'), 'Pisazo,', [3, 8], 0, null, null, null);
         $score = new ScoreFlatComplete($ad);
         $result = $score();
 
@@ -40,7 +41,7 @@ class ScoreFlatCompleteTest extends TestCase
 
     public function testIsNotCompleteHouseSizeNull()
     {
-        $ad = new Ad(new AdId(5), 'FLAT', 'Pisazo,', [3, 8], null, null, null, null);
+        $ad = new Ad(new AdId(5), new AdTypology('FLAT'), 'Pisazo,', [3, 8], null, null, null, null);
         $score = new ScoreFlatComplete($ad);
         $result = $score();
 
@@ -54,7 +55,7 @@ class ScoreFlatCompleteTest extends TestCase
     {
         $ad = new Ad(
             new AdId(9),
-            'FLAT',
+            new AdTypology('FLAT'),
             'Maravilloso chalet situado en las afueras de un pequeñoo pueblo rural. El entorno es espectacular, las vistas magníficas. cómprelo ahora!',
             [1, 7],
             300,

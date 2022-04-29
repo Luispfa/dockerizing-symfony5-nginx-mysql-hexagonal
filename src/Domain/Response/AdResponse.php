@@ -6,6 +6,7 @@ namespace App\Domain\Response;
 
 use App\Domain\Ad;
 use App\Domain\AdId;
+use App\Domain\AdTypology;
 use DateTimeImmutable;
 
 final class AdResponse
@@ -14,7 +15,7 @@ final class AdResponse
 
     public function __construct(
         AdId $id,
-        String $typology,
+        AdTypology $typology,
         String $description,
         array $pictures,
         int $houseSize,
@@ -36,7 +37,7 @@ final class AdResponse
     {
         return [
             'id' => $this->id->value(),
-            'typology' => $this->typology,
+            'typology' => $this->typology->value(),
             'description' => $this->description,
             'pictures' => $this->pictures,
             'houseSize' => $this->houseSize,

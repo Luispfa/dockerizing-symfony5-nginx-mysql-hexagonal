@@ -4,6 +4,7 @@ namespace Tests\Domain\Score;
 
 use App\Domain\Ad;
 use App\Domain\AdId;
+use App\Domain\AdTypology;
 use App\Domain\Score\ScoreChaletComplete;
 use App\Infrastructure\Persistence\InFileSystemPersistence;
 use PHPUnit\Framework\TestCase;
@@ -28,7 +29,7 @@ class ScoreChaletCompleteTest extends TestCase
 
     public function testIsNotCompleteHouseSizeZero()
     {
-        $ad = new Ad(new AdId(5), 'CHALET', 'Pisazo,', [3, 8], 0, null, null, null);
+        $ad = new Ad(new AdId(5), new AdTypology('CHALET'), 'Pisazo,', [3, 8], 0, null, null, null);
         $score = new ScoreChaletComplete($ad);
         $result = $score();
 
@@ -37,7 +38,7 @@ class ScoreChaletCompleteTest extends TestCase
 
     public function testIsNotCompleteHouseSizeNull()
     {
-        $ad = new Ad(new AdId(5), 'CHALET', 'Pisazo,', [3, 8], NULL, null, null, null);
+        $ad = new Ad(new AdId(5), new AdTypology('CHALET'), 'Pisazo,', [3, 8], NULL, null, null, null);
         $score = new ScoreChaletComplete($ad);
         $result = $score();
 
@@ -48,7 +49,7 @@ class ScoreChaletCompleteTest extends TestCase
     {
         $ad = new Ad(
             new AdId(9),
-            'CHALET',
+            new AdTypology('CHALET'),
             'Maravilloso chalet situado en lAs afueras de un peque�oo pueblo rural. El entorno es espectacular, las vistas magníficas. cómprelo ahora!',
             [1, 7],
             300,
