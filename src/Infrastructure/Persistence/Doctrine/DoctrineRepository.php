@@ -22,16 +22,6 @@ abstract class DoctrineRepository
         return $this->entityManager;
     }
 
-    public function searchAll($entity): array
-    {
-        return $this->repository($entity)->findAll();
-    }
-
-    public function search($entity, int $id)
-    {
-        return $this->repository($entity)->find($id);
-    }
-
     protected function persist($entity): void
     {
         $this->entityManager()->persist($entity);

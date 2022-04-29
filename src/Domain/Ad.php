@@ -12,7 +12,7 @@ final class Ad
     const RELEVANT_SCORE = 40;
 
     public function __construct(
-        int $id,
+        AdId $id,
         String $typology,
         String $description,
         array $pictures,
@@ -31,7 +31,7 @@ final class Ad
         $this->irrelevantSince = $irrelevantSince;
     }
 
-    public function getId(): int
+    public function getId(): AdId
     {
         return $this->id;
     }
